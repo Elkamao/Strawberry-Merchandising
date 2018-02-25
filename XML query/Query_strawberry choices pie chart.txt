@@ -1,0 +1,22 @@
+<base table="certification.retail.salesdetail_customer"/>
+
+<block name="choices_of_straberry">
+<link table2="certification.retail.products" col="sku" col2="sku" shift="0"/>
+<sel value="(groupdesc='FRUIT')"/>
+<let search_string="STRAWBE">
+  <sel value="(contains(description;{qv(@search_string)}))"/>
+</let>
+<sel value="xsales>0"/>
+<tabu label="Tabulation on Sales by Strawberry Types" breaks="description">
+  <tcol fun="sum" name="totalsale" source="xsales" label="Total Sales by Strawberry" weight=""/>
+</tabu>
+</block>
+
+<note> Pie Chart for Choices of Straberry</note>
+<dynamic>
+  <widget class_="chart" type_="pie" base_="certification.retail.salesdetail_customer"  width_="700" height_="500">
+	<insert block="choices_of_straberry"/>
+   
+
+  </widget>
+</dynamic>

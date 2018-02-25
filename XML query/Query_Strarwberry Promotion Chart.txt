@@ -1,0 +1,27 @@
+<base table="certification.retail.salesdetail_customer"/>
+<block name="straw_promo">
+<sel value="sku='322166'"/>
+<sort col="promo" dir="up"/>
+<willbe name="unit_promo" value="promo/qty" label="Unit Promo" format="dec:2"/>
+<sort col="unit_promo" dir="up"/>
+
+<willbe name="has_promotion" value="if(promo<0;1;0)"/>
+<willbe name="month" value="month(date)" label="Month"/>
+</block>
+
+<note> Line chart for promotion period</note>
+<dynamic>
+  <widget class_="graphics" base_="certification.retail.salesdetail_customer"
+   width_="800" height_="600">   
+    <insert block="straw_promo"/>
+    <graphspec width="600" height="400">
+      <chart type="line" title="Strawberry WIC Promotion Period" samples="25">
+        <data x="date" y="unit_promo"/>
+        <axes xlabel="Date" ylabel="Unit Promotion"/>
+        <ticks xrot="25"/>
+        <style titlesize="20" bg="white"/>
+      </chart>
+    </graphspec>
+  </widget>
+</dynamic>
+

@@ -1,0 +1,36 @@
+<base table="certification.retail.salesdetail_customer"/>
+
+<block name="sales_by_month_straw">
+<note> Filter out Strawberries Transactions</note>
+<link table2="certification.retail.products" col="sku" col2="sku"/>
+<sel value="(groupdesc='FRUIT')"/>
+<let search_string="STRAWBE">
+  <sel value="(contains(description;{qv(@search_string)}))"/>
+</let>
+
+<willbe name="year" value="year(date)" label="Year" format="type:nocommas"/>
+<willbe name="month" value="month(date)" label="Month"/>
+
+<tabu label="Sales by Month" breaks="month" cbreaks="year">
+  <tcol source="xsales" fun="sum" label="Total sale"/>
+  <break col="month" sort="up"/>
+  <break col="year" sort="up"/>
+</tabu>
+</block>
+
+<note> Line chart for sales over months</note>
+
+<dynamic>
+  <widget class_="chart" type_="line" 
+  base_="certification.retail.salesdetail_customer" width_="800" height_="600">
+   <insert block="sales_by_month_straw"/>	
+       <graphspec>
+      <chartarea width="800" height="500"/>
+      <title text="Strawberry Sales by Month (2011-2014)" font="20px sans-serif" color="black"/>
+      <legend position="right">
+        <labels font="15px sans-serif"/>
+      </legend>
+      </graphspec>   
+  </widget>
+</dynamic>
+

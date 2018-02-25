@@ -1,0 +1,33 @@
+<base table="certification.retail.salesdetail_customer"/>
+<block name="pct_promo_location">
+<sel value="sku='322166'"/>
+<sort col="promo" dir="up"/>
+<willbe name="unit_promo" value="promo/qty" label="Unit Promo" format="dec:2"/>
+<sort col="unit_promo" dir="up"/>
+<willbe name="has_promo" value="if(promo<0;1;0)"/>
+<willbe name="month" value="month(date)" label="Month"/>
+<tabu label="Promotion by store" breaks="store" cbreaks="has_promo">
+  <tcol fun="cnt" name="num_trans" source="transid" label="Number of Transaction" weight=""/>
+</tabu>
+<willbe name="pct_promo_trans" value="m0/num_trans*100" label="% Promoted Transaction"/>
+<link table2="certification.retail.stores" col="store" col2="store" cols="divisiondesc,subdivisiondesc,city,state" shift="0"/>
+<sort col="pct_promo_trans" dir="down"/>
+
+<tabu label="Avg percent promotion by location" breaks="divisiondesc">
+  <tcol source="pct_promo_trans" fun="avg" name="avg_pct_promo" label="Avg Percent of Transactions with Promotion"/>
+</tabu>
+</block>
+
+<dynamic>
+  <widget class_="chart" type_="bar" 
+  base_="certification.retail.salesdetail_customer">
+    <insert block="pct_promo_location"/>
+     <graphspec>
+      <title text="Avg Percent of Strawberry Transactions with Promotion by Division" 
+       color="black" font="18px sans-serif">
+      </title>
+    </graphspec>
+  </widget>
+</dynamic>
+
+
