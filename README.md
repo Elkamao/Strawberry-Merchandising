@@ -1,4 +1,4 @@
-#Table of Content
+##Table of Content
 * [Project Background](#pro-back)
 * [Strawberry Transactions](#straw-trans)
 * [Promotion Analysis (Case Study)](#promo)
