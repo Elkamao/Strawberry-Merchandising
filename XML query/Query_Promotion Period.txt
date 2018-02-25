@@ -1,0 +1,51 @@
+<base table="certification.retail.salesdetail_customer"/>
+
+<block name="aa" sku="" store="">
+<sel value="sku={@sku}&store={@store}"/>
+<willbe name="unit_promo" value="promo/qty" label="Unit Promo" format="dec:2"/>
+<sort col="unit_promo" dir="up"/>
+<willbe name="has_promo" value="if(promo<0;1;0)"/>
+<willbe name="month" value="month(date)" label="Month"/>
+<tabu label="promo or not" breaks="date">
+  <tcol fun="sum" source="has_promo" label="num_transpromo" weight=""/>
+  <break col="t0" sort="up"/>
+  <break col="date" sort="up"/>
+</tabu >
+</block>
+
+
+<dynamic>
+<layout>
+<widget class_="graphics" base_="certification.retail.salesdetail_customer" width_="1000" height_="200">
+<insert block="aa" sku="322166" store="61"/> 
+  <graphspec width="1000" height="200">
+<chart type="line" title="Promotion Period (Store=61 West)"> 
+  <data x="date" y="t0"/>
+<legend pos="right"/>
+<style titlesize="20"/>
+</chart> </graphspec>
+</widget>   
+  
+ <widget class_="graphics" base_="certification.retail.salesdetail_customer" width_="1000" height_="200">
+<insert block="aa" sku="322166" store="25"/> 
+  <graphspec width="1000" height="200">
+<chart type="line" title="Promotion Period (Store=25 East)"> 
+  <data x="date" y="t0"/>
+<legend pos="right"/>
+<style titlesize="20"/>
+</chart> </graphspec>
+</widget> 
+  
+<widget class_="graphics" base_="certification.retail.salesdetail_customer" width_="1000" height_="200">
+<insert block="aa" sku="322166" store="3"/> 
+  <graphspec width="1000" height="200">
+<chart type="line" title="Promotion Period (Store=3 North)"> 
+  <data x="date" y="t0"/>
+<legend pos="right"/>
+<style titlesize="20"/>
+</chart> </graphspec>
+</widget> 
+  
+</layout> </dynamic>
+
+
