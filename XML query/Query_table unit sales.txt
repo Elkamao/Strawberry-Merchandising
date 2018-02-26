@@ -1,0 +1,9 @@
+<base table="certification.retail.salesdetail_customer"/>
+
+<link table2="certification.retail.stores" col="store" col2="store" cols="divisiondesc" shift="0"/>
+<sel value="sku='322166'"/>
+<willbe name="unit_sales" value="xsales/qty" label="Unit Sales"/>
+
+<tabu label="Price by devision" breaks="divisiondesc">
+  <tcol source="unit_sales" fun="avg" label="Avg Unit Sales"/>
+</tabu>
