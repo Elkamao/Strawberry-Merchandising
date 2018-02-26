@@ -18,18 +18,38 @@
 <layout>
 <widget class_="graphics" base_="certification.retail.salesdetail_customer" width_="1000" height_="200">
 <insert block="aa" sku="322166" store="61"/> 
-  <graphspec width="1000" height="200">
+  <graphspec width="1000" height="100">
 <chart type="line" title="Promotion Period (Store=61 West)"> 
   <data x="date" y="t0"/>
 <legend pos="right"/>
 <style titlesize="20"/>
 </chart> </graphspec>
 </widget>   
+
+<widget class_="graphics" base_="certification.retail.salesdetail_customer" width_="1000" height_="200">
+<insert block="aa" sku="322166" store="73"/> 
+  <graphspec width="1000" height="100">
+<chart type="line" title="Promotion Period (Store=73 West)"> 
+  <data x="date" y="t0"/>
+<legend pos="right"/>
+<style titlesize="20"/>
+</chart> </graphspec>
+</widget>  
   
  <widget class_="graphics" base_="certification.retail.salesdetail_customer" width_="1000" height_="200">
 <insert block="aa" sku="322166" store="25"/> 
-  <graphspec width="1000" height="200">
+  <graphspec width="1000" height="100">
 <chart type="line" title="Promotion Period (Store=25 East)"> 
+  <data x="date" y="t0"/>
+<legend pos="right"/>
+<style titlesize="20"/>
+</chart> </graphspec>
+</widget> 
+
+<widget class_="graphics" base_="certification.retail.salesdetail_customer" width_="1000" height_="200">
+<insert block="aa" sku="322166" store="94"/> 
+  <graphspec width="1000" height="100">
+<chart type="line" title="Promotion Period (Store=94 East)"> 
   <data x="date" y="t0"/>
 <legend pos="right"/>
 <style titlesize="20"/>
@@ -38,8 +58,18 @@
   
 <widget class_="graphics" base_="certification.retail.salesdetail_customer" width_="1000" height_="200">
 <insert block="aa" sku="322166" store="3"/> 
-  <graphspec width="1000" height="200">
+  <graphspec width="1000" height="100">
 <chart type="line" title="Promotion Period (Store=3 North)"> 
+  <data x="date" y="t0"/>
+<legend pos="right"/>
+<style titlesize="20"/>
+</chart> </graphspec>
+</widget> 
+
+<widget class_="graphics" base_="certification.retail.salesdetail_customer" width_="1000" height_="200">
+<insert block="aa" sku="322166" store="184"/> 
+  <graphspec width="1000" height="100">
+<chart type="line" title="Promotion Period (Store=184 North)"> 
   <data x="date" y="t0"/>
 <legend pos="right"/>
 <style titlesize="20"/>
@@ -47,5 +77,6 @@
 </widget> 
   
 </layout> </dynamic>
+
 
 
