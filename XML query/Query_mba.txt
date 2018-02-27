@@ -1,0 +1,33 @@
+<base table="certification.retail.salesdetail_customer"/>
+
+<link table2="uploads.recruiting_emao_1469cb2c2bff4958a5b33925c93c5df1" col="transid" col2="transid" type="include" shift="0"/>
+<tabu label="tabulation" breaks="sku">
+  <tcol fun="ucnt" name="num_straw_other" source="transid" label="Number item+straw" weight=""/>
+</tabu>
+<willbe name="temp" value="1"/>
+<link table2="certification.retail.salesdetail_customer" col="temp" col2="temp" shift="0">
+  <sel value="xsales>0"/>
+  <tabu label="Tabulation">
+    <tcol fun="ucnt" name="num_total" source="transid" label="Number Total Trans" weight=""/>
+  </tabu>
+  <willbe name="temp" value="1"/>
+</link>
+<link table2="certification.retail.salesdetail_customer" col="temp" col2="temp" shift="0">
+  <sel value="sku='322166'"/>
+  <tabu label="Tabulation">
+    <tcol fun="ucnt" name="num_straw" source="transid" label="Number Strawberry Trans" weight=""/>
+  </tabu>
+  <willbe name="temp" value="1"/>
+</link>
+<link table2="certification.retail.salesdetail_customer" col="temp" col2="temp" shift="0">
+  <tabu breaks="sku" label="Tabulation">
+    <tcol fun="ucnt" name="num_item" source="transid" label="Number Other Trans" weight=""/>
+  </tabu>
+  <willbe name="temp" value="1"/>
+</link>
+<willbe name="support" value="num_straw_other/num_total" label="Support" format="dec:4"/>
+<willbe name="confidence" value="support/(num_item/num_total)" label="Confidence" format="dec:4"/>
+<willbe name="lift" value="confidence/(num_straw/num_total)" label="Lift Score" format="dec:4"/>
+<sort col="lift" dir="down"/>
+
+<link table2="certification.retail.products" col="sku" col2="sku" cols="description,groupdesc"/>
