@@ -1,0 +1,25 @@
+<base table="certification.retail.salesdetail_customer"/>
+<block name="s">
+  <sel value="sku='322166'"/>
+  <willbe name="month" value="month(date)" label="Month"/>
+  <willbe name="promo_r" value="-promo" label="Promotion Reverted"/>
+  <tabu label="promo or not" breaks="month">
+    <tcol fun="sum" source="promo_r" label="Total Promotion"/>
+    <tcol source="xsales" fun="sum" label="Total Sales"/>
+    <break col="month" sort="up"/>
+  </tabu>
+</block>
+
+<dynamic>
+  <widget class_="chart" type_="line" 
+  base_="certification.retail.salesdetail_customer" width_="800" height_="600">
+   <insert block="s"/>	
+       <graphspec>
+      <chartarea width="600" height="400"/>
+      <title text="Strawberry Sales and Promotion by Month " font="20px sans-serif" color="black"/>
+      <legend position="right">
+        <labels font="15px sans-serif"/>
+      </legend>
+      </graphspec>   
+  </widget>
+</dynamic>
